@@ -1,0 +1,43 @@
+﻿@page "/appointments"
+
+<h3>Appointments</h3>
+
+<div class="nav-item px-3">
+    <NavLink class="nav-link" href="appointments/create-appointment">
+        <span class="oi oi-plus" aria-hidden="true"></span>New Appointment
+    </NavLink>
+</div>
+
+@if (_appointments.Count() > 0)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Customer FirstName</th>
+                <th>Customer LastName</th>
+                <th>Description</th>
+                <th>Pet Name</th>
+                <th>Appointment Id</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var appointment in _appointments)
+            {
+                <tr>
+                    <td>@appointment.Time</td>
+                    <td>@appointment.Customer.FirstName</td>
+                    <td>@appointment.Customer.LastName</td>
+                    <td>@appointment.Description</td>
+                    <td>@appointment.Pet.PetName</td>
+                    <td>@appointment.AppointmentId</td>
+                </tr>
+            }
+        </tbody>
+    </table>    
+}
+else
+{
+    <p>You do not have any appointments yet.</p>
+    <p>Click New Appointment to get started.</p>
+}
