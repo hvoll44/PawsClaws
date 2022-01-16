@@ -1,14 +1,11 @@
 ﻿using PawsClaws.Appointments;
-using PawsClaws.Customers;
 using PawsClaws.Data;
-using PawsClaws.Data.Models;
-using PawsClaws.Pets;
 
 namespace PawsClaws.Business.Appointments;
 
 public class AppointmentService : IAppointmentService
 {
-    public int CreateAppointment(Appointment appointment)
+    public int CreateAppointment(AppointmentModel appointment)
     {
         using var context = new PawsClawsContext();
 
@@ -17,7 +14,7 @@ public class AppointmentService : IAppointmentService
         return context.SaveChanges();
     }
 
-    public List<Appointment> GetAppointmentListAsync()
+    public List<AppointmentModel> GetAppointmentListAsync()
     {
         using var context = new PawsClawsContext();
 
@@ -26,13 +23,13 @@ public class AppointmentService : IAppointmentService
             .ToList();
     }
 
-    public int UpdateAppointment(Appointment appointment)
+    public int UpdateAppointment(AppointmentModel appointment)
     {
         using var context = new PawsClawsContext();
 
         var appointmentDto = appointment.ToDto();
 
-        var updatedAppointment = context.Appointments.First(a => a.AppointmentDtoId == appointment.AppointmentId);
+        var updatedAppointment = context.Appointments.First(a => a.AppointmentId == appointment.AppointmentId);
 
         updatedAppointment = appointmentDto;
 
@@ -43,51 +40,17 @@ public class AppointmentService : IAppointmentService
     {
         using var context = new PawsClawsContext();
 
-        var appointment = context.Appointments.First(a => a.AppointmentDtoId == appointmentId);
+        var appointment = context.Appointments.First(a => a.AppointmentId == appointmentId);
 
         context.Appointments.Remove(appointment);
 
         return context.SaveChanges();
     }
-}
 
-public static class Mapper
-{
-    public static AppointmentDto ToDto(this Appointment model) => new AppointmentDto()
+    public AppointmentModel GetAppointmentAsync(int appointmentId)
     {
-        AppointmentDtoId = model.AppointmentId,
-        Customer = new CustomerDto()
-        {
-            FirstName = model.Customer.FirstName,
-            LastName = model.Customer.LastName,
-            Email = model.Customer.Email,
-            PhoneNumber = model.Customer.PhoneNumber,
-        },
-        Description = model.Description,
-        Pet = new PetDto()
-        {
-            PetName = model.Pet.PetName,
-            CustomerId = model.Customer.CustomerId,
-        },
-        Time = model.Time
-    };
+        using var context = new PawsClawsContext();
 
-    public static Appointment ToModel(this AppointmentDto dto) => new Appointment()
-    {
-        AppointmentId = dto.AppointmentDtoId,
-        Customer = new Customer()
-        {
-            FirstName = dto.Customer.FirstName,
-            LastName = dto.Customer.LastName,
-            Email= dto.Customer.Email,
-            PhoneNumber= dto.Customer.PhoneNumber,
-        },
-        Description = dto.Description,
-        Pet = new Pet()
-        {
-            PetName = dto.Pet.PetName,
-            CustomerId = dto.Customer.CustomerDtoId,
-        },
-        Time = dto.Time
-    };
+        return context.Appointments.First(a => a.AppointmentId == appointmentId).ToModel();
+    }
 }

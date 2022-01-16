@@ -1,6 +1,6 @@
 ﻿namespace PawsClaws.Customers;
 
-public class Customer
+public class CustomerModel
 {
     public int CustomerId { get; set; }
 

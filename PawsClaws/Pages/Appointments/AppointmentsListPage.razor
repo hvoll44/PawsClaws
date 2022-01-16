@@ -19,6 +19,8 @@
                 <th>Description</th>
                 <th>Pet Name</th>
                 <th>Appointment Id</th>
+                <th>Update</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +33,12 @@
                     <td>@appointment.Description</td>
                     <td>@appointment.Pet.PetName</td>
                     <td>@appointment.AppointmentId</td>
+                    <td>
+                        <button class="btn btn-primary" @onclick="(_ => OnUpdate(appointment.AppointmentId))">Delete</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" @onclick="(_ => OnDelete(appointment.AppointmentId))">Delete</button>
+                    </td>
                 </tr>
             }
         </tbody>

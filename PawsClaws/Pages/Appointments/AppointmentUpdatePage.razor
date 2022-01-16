@@ -1,6 +1,6 @@
-﻿@page "/appointments/create-appointment"
+﻿@page "/appointments/update-appointment/{AppointmentId:int}"
 
-<h3>Create Appointment</h3>
+<h3>Edit Appointment</h3>
 
 <div class="nav-item px-3">
     <NavLink class="nav-link" href="appointments">
@@ -8,7 +8,7 @@
     </NavLink>
 </div>
 
-<EditForm Model="@_model" OnValidSubmit="@OnSubmit">
+@*<EditForm Model="@_model" OnValidSubmit="@OnSubmit">
     <InputText id="first-name" @bind-Value="_model.Customer.FirstName" />
     <InputText id="last-name" @bind-Value="_model.Customer.LastName" />
     <InputText id="email" @bind-Value="_model.Customer.Email" />
@@ -17,5 +17,4 @@
     <InputText id="description" @bind-Value="_model.Description" />
     <InputDate @bind-Value="_model.Time" />
     <button type="submit">Submit</button>
-</EditForm>
-
+</EditForm>*@

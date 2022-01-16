@@ -4,7 +4,9 @@ namespace PawsClaws.Business.Appointments;
 
 public interface IAppointmentService
 {
-    int CreateAppointment(Appointment appointment);
-    List<Appointment> GetAppointmentListAsync();
-    int UpdateAppointment(Appointment appointment);
+    public int CreateAppointment(AppointmentModel appointment);
+    public AppointmentModel GetAppointmentAsync(int appointmentId);
+    public List<AppointmentModel> GetAppointmentListAsync();
+    public int UpdateAppointment(AppointmentModel appointment);
+    public int DeleteAppointment(int appointmentId);
 }

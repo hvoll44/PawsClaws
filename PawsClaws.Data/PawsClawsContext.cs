@@ -4,9 +4,9 @@ using PawsClaws.Data.Models;
 namespace PawsClaws.Data;
 public class PawsClawsContext : DbContext
 {
-    public DbSet<AppointmentDto> Appointments { get; set; }
-    public DbSet<CustomerDto> Customers { get; set; }
-    public DbSet<PetDto> Pets { get; set; }
+    public DbSet<Appointment> Appointments { get; set; }
+    public DbSet<Customer> Customers { get; set; }
+    public DbSet<Pet> Pets { get; set; }
 
     public string DbPath { get; }
 
@@ -24,8 +24,8 @@ public class PawsClawsContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<AppointmentDto>().ToTable("Appointment");
-        modelBuilder.Entity<CustomerDto>().ToTable("Customer");
-        modelBuilder.Entity<PetDto>().ToTable("Pet");
+        modelBuilder.Entity<Appointment>().ToTable("Appointment");
+        modelBuilder.Entity<Customer>().ToTable("Customer");
+        modelBuilder.Entity<Pet>().ToTable("Pet");
     }
 }

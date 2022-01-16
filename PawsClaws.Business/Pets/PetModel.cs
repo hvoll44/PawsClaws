@@ -2,13 +2,13 @@
 
 namespace PawsClaws.Pets;
 
-public class Pet
+public class PetModel
 {
     public int PetId { get; set; }
 
     public string PetName { get; set; }
 
-    public Customer Customer { get; set; }
+    public CustomerModel Customer { get; set; }
 
     public int CustomerId { get; set; }
 }

@@ -1,12 +1,12 @@
 ﻿namespace PawsClaws.Data.Models;
 
-public class PetDto
+public class Pet
 {
-    public int PetDtoId { get; set; }
+    public int PetId { get; set; }
 
     public string PetName { get; set; }
 
-    public CustomerDto Customer { get; set; }
+    public Customer Customer { get; set; }
 
     public int CustomerId { get; set; }
 }

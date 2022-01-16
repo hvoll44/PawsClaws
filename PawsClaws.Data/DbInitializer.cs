@@ -12,24 +12,24 @@ public static class DbInitializer
             return;   // DB has been seeded
         }
 
-        var customers = new CustomerDto[]
+        var customers = new Customer[]
         {
-            new CustomerDto{FirstName="Carson",LastName="Alexander", Email = "test@test.test", PhoneNumber = "555-555-1234"},
-            new CustomerDto{FirstName="Meredith",LastName="Alonso", Email = "test@test.test", PhoneNumber = "555-555-1234"},
-            new CustomerDto{FirstName="Arturo",LastName="Anand", Email = "test@test.test", PhoneNumber = "555-555-1234"},
-            new CustomerDto{FirstName="Gytis",LastName="Barzdukas", Email = "test@test.test", PhoneNumber = "555-555-1234"},
+            new Customer{FirstName="Carson",LastName="Alexander", Email = "test@test.test", PhoneNumber = "555-555-1234"},
+            new Customer{FirstName="Meredith",LastName="Alonso", Email = "test@test.test", PhoneNumber = "555-555-1234"},
+            new Customer{FirstName="Arturo",LastName="Anand", Email = "test@test.test", PhoneNumber = "555-555-1234"},
+            new Customer{FirstName="Gytis",LastName="Barzdukas", Email = "test@test.test", PhoneNumber = "555-555-1234"},
         };
 
         context.Customers.AddRange(customers);
         context.SaveChanges();
 
-        var courses = new PetDto[]
+        var courses = new Pet[]
         {
-            new PetDto{ PetName = "Blue", CustomerId = 1},
-            new PetDto{ PetName = "Spot", CustomerId = 1},
-            new PetDto{ PetName = "Walter", CustomerId = 3},
-            new PetDto{ PetName = "Sandy", CustomerId = 4},
-            new PetDto{ PetName = "Rain", CustomerId = 5},
+            new Pet{ PetName = "Blue", CustomerId = 1},
+            new Pet{ PetName = "Spot", CustomerId = 2},
+            new Pet{ PetName = "Walter", CustomerId = 3},
+            new Pet{ PetName = "Sandy", CustomerId = 4},
+            new Pet{ PetName = "Rain", CustomerId = 4},
         };
 
         context.Pets.AddRange(courses);

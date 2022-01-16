@@ -6,10 +6,13 @@ namespace PawsClaws.Pages.Appointments;
 
 public sealed partial class AppointmentsListPage
 {
-    private List<Appointment> _appointments = new List<Appointment>();
+    private List<AppointmentModel> _appointments = new List<AppointmentModel>();
 
     [Inject]
     private IAppointmentService _appointmentService { get; set; }
+
+    [Inject]
+    NavigationManager NavigationManager { get; set; }
 
     protected override async Task OnParametersSetAsync()
     {
@@ -19,5 +22,15 @@ public sealed partial class AppointmentsListPage
     private async Task SetAppointmentsAsync()
     {
         _appointments = _appointmentService.GetAppointmentListAsync();
+    }
+
+    private async Task OnDelete(int appointmentId)
+    {
+        _appointmentService.DeleteAppointment(appointmentId);
+    }
+
+    private async Task OnUpdate(int appointmentId)
+    {
+        NavigationManager.NavigateTo($"appointments/Update-appointment/{appointmentId}");
     }
 }

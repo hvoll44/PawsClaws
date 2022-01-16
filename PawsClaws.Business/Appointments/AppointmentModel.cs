@@ -3,15 +3,15 @@ using PawsClaws.Pets;
 
 namespace PawsClaws.Appointments;
 
-public class Appointment
+public class AppointmentModel
 {
     public int AppointmentId { get; set; }
 
     public DateTime Time { get; set; }
 
-    public Customer Customer { get; set; }
+    public CustomerModel Customer { get; set; }
 
-    public Pet Pet { get; set; }
+    public PetModel Pet { get; set; }
 
     public string Description { get; set; }
 }

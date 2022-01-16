@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PawsClaws", "PawsClaws\PawsClaws.csproj", "{8D5DD79A-C6C9-4EA2-94C9-656CE75BB1D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PawsClaws", "PawsClaws\PawsClaws.csproj", "{8D5DD79A-C6C9-4EA2-94C9-656CE75BB1D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PawsClaws.Data", "PawsClaws.Data\PawsClaws.Data.csproj", "{BF7B8188-89DE-44CE-A704-5CF82FA6F5F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PawsClaws.Data", "PawsClaws.Data\PawsClaws.Data.csproj", "{BF7B8188-89DE-44CE-A704-5CF82FA6F5F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PawsClaws.Business", "PawsClaws.Business\PawsClaws.Business.csproj", "{D02EA9C4-7372-4327-A18B-321749C12716}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PawsClaws.Business", "PawsClaws.Business\PawsClaws.Business.csproj", "{D02EA9C4-7372-4327-A18B-321749C12716}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
