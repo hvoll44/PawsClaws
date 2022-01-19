@@ -6,7 +6,7 @@ public static class DbInitializer
 {
     public static void Initialize(PawsClawsContext context)
     {
-        // Look for any customers.
+        //Look for any customers.
         if (context.Customers.Any())
         {
             return;   // DB has been seeded
@@ -33,6 +33,14 @@ public static class DbInitializer
         };
 
         context.Pets.AddRange(courses);
-        context.SaveChanges();        
+        context.SaveChanges();
+
+        var appointments = new Appointment[]
+        {
+            new Appointment{ CustomerId = 1, Time = DateTime.Now, Description="Pet's paw has thorn"},
+            new Appointment{ CustomerId = 2, Time = DateTime.Now, Description="Annual checkup"},
+        };
+        context.Appointments.AddRange(appointments);
+        context.SaveChanges();
     }
 }

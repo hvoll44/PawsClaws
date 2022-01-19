@@ -1,13 +1,21 @@
-﻿using PawsClaws.Appointments;
+﻿using Microsoft.EntityFrameworkCore;
+using PawsClaws.Appointments;
 using PawsClaws.Data;
 
 namespace PawsClaws.Business.Appointments;
 
 public class AppointmentService : IAppointmentService
 {
+    private readonly IDbContextFactory<PawsClawsContext> _db;
+
+    public AppointmentService(IDbContextFactory<PawsClawsContext> db)
+    {
+        _db = db;
+    }
+
     public int CreateAppointment(AppointmentModel appointment)
     {
-        using var context = new PawsClawsContext();
+        using var context = _db.CreateDbContext();
 
         context.Appointments.Add(appointment.ToDto());
 
@@ -16,7 +24,7 @@ public class AppointmentService : IAppointmentService
 
     public List<AppointmentModel> GetAppointmentListAsync()
     {
-        using var context = new PawsClawsContext();
+        using var context = _db.CreateDbContext();
 
         return context.Appointments
             .Select(a => a.ToModel())
@@ -25,7 +33,7 @@ public class AppointmentService : IAppointmentService
 
     public int UpdateAppointment(AppointmentModel appointment)
     {
-        using var context = new PawsClawsContext();
+        using var context = _db.CreateDbContext();
 
         var appointmentDto = appointment.ToDto();
 
@@ -38,7 +46,7 @@ public class AppointmentService : IAppointmentService
 
     public int DeleteAppointment(int appointmentId)
     {
-        using var context = new PawsClawsContext();
+        using var context = _db.CreateDbContext();
 
         var appointment = context.Appointments.First(a => a.AppointmentId == appointmentId);
 
@@ -49,7 +57,7 @@ public class AppointmentService : IAppointmentService
 
     public AppointmentModel GetAppointmentAsync(int appointmentId)
     {
-        using var context = new PawsClawsContext();
+        using var context = _db.CreateDbContext();
 
         return context.Appointments.First(a => a.AppointmentId == appointmentId).ToModel();
     }

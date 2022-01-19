@@ -26,16 +26,16 @@ public static class AppointmentMapper
         AppointmentId = dto.AppointmentId,
         Customer = new CustomerModel()
         {
-            FirstName = dto.Customer.FirstName,
-            LastName = dto.Customer.LastName,
-            Email= dto.Customer.Email,
-            PhoneNumber= dto.Customer.PhoneNumber,
+            FirstName = dto.Customer?.FirstName ?? String.Empty,
+            LastName = dto.Customer?.LastName ?? String.Empty,
+            Email= dto.Customer?.Email ?? String.Empty,
+            PhoneNumber= dto.Customer?.PhoneNumber ?? String.Empty,
         },
         Description = dto.Description,
         Pet = new PetModel()
         {
-            PetName = dto.Customer.Pets.First().PetName,
-            CustomerId = dto.Customer.CustomerId,
+            PetName = dto.Customer?.Pets.First()?.PetName ?? "no pet specified",
+            CustomerId = dto.Customer?.CustomerId ?? 0,
         },
         Time = dto.Time
     };

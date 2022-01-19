@@ -7,9 +7,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
 
 builder.Services.AddScoped<IAppointmentService, AppointmentService>();
+
+builder.Services.AddDbContextFactory<PawsClawsContext>((provider, options) =>
+{
+    options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PawsClaws;Integrated Security=True;Connect Timeout=60;Encrypt=False;ApplicationIntent=ReadWrite;");
+});
+
+builder.Services.AddSqlServer<PawsClawsContext>("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PawsClaws;Integrated Security=True;Connect Timeout=60;Encrypt=False;ApplicationIntent=ReadWrite;");
 
 var app = builder.Build();
 
