@@ -12,10 +12,10 @@ builder.Services.AddTransient<IAppointmentService, AppointmentService>();
 
 builder.Services.AddDbContextFactory<PawsAndClawsContext>((provider, options) =>
 {
-    options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PawsAndClaws;Integrated Security=True;Connect Timeout=60;Encrypt=False;ApplicationIntent=ReadWrite;");
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-builder.Services.AddSqlServer<PawsAndClawsContext>("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PawsAndClaws;Integrated Security=True;Connect Timeout=60;Encrypt=False;ApplicationIntent=ReadWrite;");
+builder.Services.AddSqlServer<PawsAndClawsContext>(builder.Configuration.GetConnectionString("DefaultConnection"));
 
 var app = builder.Build();
 
