@@ -10,8 +10,8 @@ using PawsClaws.Data;
 
 namespace PawsClaws.Data.Migrations
 {
-    [DbContext(typeof(PawsClawsContext))]
-    partial class PawsClawsContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(PawsAndClawsContext))]
+    partial class PawsAndClawsContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

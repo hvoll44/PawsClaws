@@ -11,9 +11,9 @@ using PawsClaws.Data;
 
 namespace PawsClaws.Data.Migrations
 {
-    [DbContext(typeof(PawsClawsContext))]
-    [Migration("20220116003956_InitialModel")]
-    partial class InitialModel
+    [DbContext(typeof(PawsAndClawsContext))]
+    [Migration("20220125022611_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

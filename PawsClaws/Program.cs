@@ -10,12 +10,12 @@ builder.Services.AddServerSideBlazor();
 
 builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 
-builder.Services.AddDbContextFactory<PawsClawsContext>((provider, options) =>
+builder.Services.AddDbContextFactory<PawsAndClawsContext>((provider, options) =>
 {
-    options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PawsClaws;Integrated Security=True;Connect Timeout=60;Encrypt=False;ApplicationIntent=ReadWrite;");
+    options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PawsAndClaws;Integrated Security=True;Connect Timeout=60;Encrypt=False;ApplicationIntent=ReadWrite;");
 });
 
-builder.Services.AddSqlServer<PawsClawsContext>("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PawsClaws;Integrated Security=True;Connect Timeout=60;Encrypt=False;ApplicationIntent=ReadWrite;");
+builder.Services.AddSqlServer<PawsAndClawsContext>("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=PawsAndClaws;Integrated Security=True;Connect Timeout=60;Encrypt=False;ApplicationIntent=ReadWrite;");
 
 var app = builder.Build();
 

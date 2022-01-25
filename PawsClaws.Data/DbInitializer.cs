@@ -4,7 +4,7 @@ namespace PawsClaws.Data;
 
 public static class DbInitializer
 {
-    public static void Initialize(PawsClawsContext context)
+    public static void Initialize(PawsAndClawsContext context)
     {
         //Look for any customers.
         if (context.Customers.Any())

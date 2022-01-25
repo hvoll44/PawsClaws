@@ -6,9 +6,9 @@ namespace PawsClaws.Business.Appointments;
 
 public class AppointmentService : IAppointmentService
 {
-    private readonly IDbContextFactory<PawsClawsContext> _db;
+    private readonly IDbContextFactory<PawsAndClawsContext> _db;
 
-    public AppointmentService(IDbContextFactory<PawsClawsContext> db)
+    public AppointmentService(IDbContextFactory<PawsAndClawsContext> db)
     {
         _db = db;
     }

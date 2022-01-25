@@ -2,15 +2,16 @@
 using PawsClaws.Data.Models;
 
 namespace PawsClaws.Data;
-public class PawsClawsContext : DbContext
+public class PawsAndClawsContext : DbContext
 {
-    public PawsClawsContext()
+    public PawsAndClawsContext()
     {
     }
 
-    public PawsClawsContext(DbContextOptions<PawsClawsContext> options)
+    public PawsAndClawsContext(DbContextOptions<PawsAndClawsContext> options)
         : base(options)
     {
+        this.Database.EnsureCreated();
         DbInitializer.Initialize(this);
     }
     public DbSet<Appointment> Appointments { get; set; }
