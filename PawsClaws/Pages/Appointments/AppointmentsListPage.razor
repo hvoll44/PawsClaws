@@ -10,7 +10,7 @@
 
 @if (_appointments.Count() > 0)
 {
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>Time</th>
@@ -19,8 +19,8 @@
                 <th>Description</th>
                 <th>Pet Name</th>
                 <th>Appointment Id</th>
-                <th>Update</th>
-                <th>Delete</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -34,7 +34,7 @@
                     <td>@appointment.Pet.PetName</td>
                     <td>@appointment.AppointmentId</td>
                     <td>
-                        <button class="btn btn-primary" @onclick="(_ => OnUpdate(appointment.AppointmentId))">Delete</button>
+                        <button class="btn btn-primary" @onclick="(_ => OnUpdate(appointment.AppointmentId))">Update</button>
                     </td>
                     <td>
                         <button class="btn btn-danger" @onclick="(_ => OnDelete(appointment.AppointmentId))">Delete</button>
