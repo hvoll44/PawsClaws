@@ -9,4 +9,9 @@ public class Pet
     public Customer Customer { get; set; }
 
     public int CustomerId { get; set; }
+
+    public Pet()
+    {
+        Customer = new Customer();
+    }
 }

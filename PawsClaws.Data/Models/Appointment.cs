@@ -11,4 +11,9 @@ public class Appointment
     public string Description { get; set; }
 
     public DateTime Time { get; set; }
+    
+    public Appointment()
+    {
+        Customer = new Customer();
+    }
 }

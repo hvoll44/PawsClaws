@@ -27,6 +27,7 @@ public class AppointmentService : IAppointmentService
         using var context = _db.CreateDbContext();
 
         return context.Appointments
+            .Include(a => a.Customer)
             .Select(a => a.ToModel())
             .ToList();
     }

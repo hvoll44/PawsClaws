@@ -34,7 +34,7 @@ public static class AppointmentMapper
         Description = dto.Description,
         Pet = new PetModel()
         {
-            PetName = dto.Customer?.Pets.First()?.PetName ?? "no pet specified",
+            PetName = (dto.Customer?.Pets is not null && dto.Customer.Pets.Count > 0) ? dto.Customer.Pets.First().PetName : "No Pet Assigned",
             CustomerId = dto.Customer?.CustomerId ?? 0,
         },
         Time = dto.Time
