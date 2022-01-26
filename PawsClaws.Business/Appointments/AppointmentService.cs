@@ -32,15 +32,31 @@ public class AppointmentService : IAppointmentService
             .ToList();
     }
 
+    public AppointmentModel GetAppointmentAsync(int appointmentId)
+    {
+        using var context = _db.CreateDbContext();
+
+        return context.Appointments
+            .Include(a => a.Customer)
+            .First(a => a.AppointmentId == appointmentId)
+            .ToModel();
+    }
+
     public int UpdateAppointment(AppointmentModel appointment)
     {
         using var context = _db.CreateDbContext();
 
         var appointmentDto = appointment.ToDto();
 
-        var updatedAppointment = context.Appointments.First(a => a.AppointmentId == appointment.AppointmentId);
+        var updatedAppointment = context.Appointments
+            .Include(a => a.Customer)
+            .First(a => a.AppointmentId == appointment.AppointmentId);
 
-        updatedAppointment = appointmentDto;
+        updatedAppointment.Customer.FirstName = appointmentDto.Customer.FirstName;
+        updatedAppointment.Customer.LastName = appointmentDto.Customer.LastName;
+        updatedAppointment.Customer.Email = appointmentDto.Customer.Email;
+        updatedAppointment.Customer.PhoneNumber = appointmentDto.Customer.PhoneNumber;
+        updatedAppointment.Description= appointmentDto.Description;
 
         return context.SaveChanges();
     }
@@ -54,12 +70,5 @@ public class AppointmentService : IAppointmentService
         context.Appointments.Remove(appointment);
 
         return context.SaveChanges();
-    }
-
-    public AppointmentModel GetAppointmentAsync(int appointmentId)
-    {
-        using var context = _db.CreateDbContext();
-
-        return context.Appointments.First(a => a.AppointmentId == appointmentId).ToModel();
     }
 }

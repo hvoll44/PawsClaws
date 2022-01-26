@@ -2,30 +2,30 @@
 using PawsClaws.Appointments;
 using PawsClaws.Business.Appointments;
 
-namespace PawsClaws.Pages.Appointments
+namespace PawsClaws.Pages.Appointments;
+
+public sealed partial class AppointmentUpdatePage
 {
-    public sealed partial class AppointmentUpdatePage
+    [Parameter]
+    public int AppointmentId { get; set; }
+
+    private AppointmentModel _model = new();
+
+    [Inject]
+    private IAppointmentService AppointmentService { get; set; }
+
+    protected override void OnInitialized()
     {
-        [Parameter]
-        public int AppointmentId { get; set; }
+        SetAppointment();
+    }
 
-        private AppointmentModel _model = new();
+    private void SetAppointment()
+    {
+        _model = AppointmentService.GetAppointmentAsync(AppointmentId);
+    }
 
-        [Inject]
-        private IAppointmentService _appointmentService { get; set; }
-
-        //{
-        //    await Task.Run(SetAppointmentAsync);
-        //}
-
-        private async Task SetAppointmentAsync()
-        {
-            _model = _appointmentService.GetAppointmentAsync(AppointmentId);
-        }
-
-        private void OnSubmit()
-        {
-            _appointmentService.UpdateAppointment(_model);
-        }
+    private void OnSubmit()
+    {
+        AppointmentService.UpdateAppointment(_model);
     }
 }

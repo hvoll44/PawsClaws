@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Pages\Appointments\AppointmentUpdatePage.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.1">
       <PrivateAssets>all</PrivateAssets>
@@ -24,18 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PawsClaws.Business\PawsClaws.Business.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\Appointments\AppointmentUpdatePage.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Pages\Appointments\AppointmentUpdatePage.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Pages\Appointments\AppointmentUpdatePage.razor" />
   </ItemGroup>
 
 </Project>

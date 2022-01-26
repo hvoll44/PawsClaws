@@ -8,13 +8,13 @@
     </NavLink>
 </div>
 
-@*<EditForm Model="@_model" OnValidSubmit="@OnSubmit">
-    <InputText id="first-name" @bind-Value="_model.Customer.FirstName" />
-    <InputText id="last-name" @bind-Value="_model.Customer.LastName" />
-    <InputText id="email" @bind-Value="_model.Customer.Email" />
-    <InputText id="phone-number" @bind-Value="_model.Customer.PhoneNumber" />
-    <InputText id="pet-name" @bind-Value="_model.Pet.PetName" />
-    <InputText id="description" @bind-Value="_model.Description" />
-    <InputDate @bind-Value="_model.Time" />
-    <button type="submit">Submit</button>
-</EditForm>*@
+<EditForm Model="@_model" OnValidSubmit="@OnSubmit">
+    <p><label>First Name:</label><InputText id="first-name" @bind-Value="_model.Customer.FirstName" /></p>
+    <p><label>Last Name:</label><InputText id="last-name" @bind-Value="_model.Customer.LastName" /></p>
+    <p><label>Email:</label><InputText id="email" @bind-Value="_model.Customer.Email" /></p>
+    <p><label>Phone Number:</label><InputText id="phone-number" @bind-Value="_model.Customer.PhoneNumber" /></p>
+    <p><label>Pet Name:</label><InputText id="pet-name" @bind-Value="_model.Pet.PetName" /></p>
+    <p><label>Description:</label><InputText id="description" @bind-Value="_model.Description" /></p>
+    <p><label>Time:</label><InputDate @bind-Value="_model.Time" /></p>
+    <button class="btn btn-primary" type="submit">Submit</button>
+</EditForm>
