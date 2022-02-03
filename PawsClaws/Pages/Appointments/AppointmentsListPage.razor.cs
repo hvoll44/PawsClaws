@@ -9,7 +9,7 @@ public sealed partial class AppointmentsListPage
     private List<AppointmentModel> _appointments = new List<AppointmentModel>();
 
     [Inject]
-    private IAppointmentService _appointmentService { get; set; }
+    private IAppointmentService AppointmentService { get; set; }
 
     [Inject]
     NavigationManager NavigationManager { get; set; }
@@ -21,12 +21,13 @@ public sealed partial class AppointmentsListPage
 
     private async Task SetAppointmentsAsync()
     {
-        _appointments = _appointmentService.GetAppointmentListAsync();
+        _appointments = AppointmentService.GetAppointmentListAsync();
     }
 
-    private async Task OnDelete(int appointmentId)
+    private void OnDelete(int appointmentId)
     {
-        _appointmentService.DeleteAppointment(appointmentId);
+        AppointmentService.DeleteAppointment(appointmentId);
+        NavigationManager.NavigateTo("/appointments", forceLoad: true);
     }
 
     private async Task OnUpdate(int appointmentId)

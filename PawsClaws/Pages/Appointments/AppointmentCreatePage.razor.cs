@@ -9,10 +9,14 @@ public sealed partial class AppointmentCreatePage
     private AppointmentModel _model = new();
 
     [Inject]
-    private IAppointmentService _appointmentService { get; set; }
+    private IAppointmentService AppointmentService { get; set; }
+
+    [Inject]
+    NavigationManager NavigationManager { get; set; }
 
     private void OnSubmit()
     {
-        _appointmentService.CreateAppointment(_model);
+        AppointmentService.CreateAppointment(_model);
+        NavigationManager.NavigateTo("/appointments");
     }
 }
