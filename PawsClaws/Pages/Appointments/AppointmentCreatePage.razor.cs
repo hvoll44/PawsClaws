@@ -14,9 +14,9 @@ public sealed partial class AppointmentCreatePage
     [Inject]
     NavigationManager NavigationManager { get; set; }
 
-    private void OnSubmit()
+    private async Task OnSubmitAsync()
     {
-        AppointmentService.CreateAppointment(_model);
+        await AppointmentService.CreateAppointmentAsync(_model);
         NavigationManager.NavigateTo("/appointments");
     }
 }

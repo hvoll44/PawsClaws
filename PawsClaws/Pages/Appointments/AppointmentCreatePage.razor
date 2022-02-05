@@ -8,7 +8,7 @@
     </NavLink>
 </div>
 
-<EditForm Model="@_model" OnValidSubmit="@OnSubmit">
+<EditForm Model="@_model" OnValidSubmit="@OnSubmitAsync">
     <p><label>First Name:</label><InputText id="first-name" @bind-Value="_model.Customer.FirstName" /></p>
     <p><label>Last Name:</label><InputText id="last-name" @bind-Value="_model.Customer.LastName" /></p>
     <p><label>Email:</label><InputText id="email" @bind-Value="_model.Customer.Email" /></p>

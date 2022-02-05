@@ -17,19 +17,19 @@ public sealed partial class AppointmentUpdatePage
     [Inject]
     NavigationManager NavigationManager { get; set; }
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        SetAppointment();
+        await SetAppointmentAsync();
     }
 
-    private void SetAppointment()
+    private async Task SetAppointmentAsync()
     {
-        _model = AppointmentService.GetAppointmentAsync(AppointmentId);
+        _model = await AppointmentService.GetAppointmentAsync(AppointmentId);
     }
 
-    private void OnSubmit()
+    private async Task OnSubmitAsync()
     {
-        AppointmentService.UpdateAppointment(_model);
+        await AppointmentService.UpdateAppointmentAsync(_model);
         NavigationManager.NavigateTo("/appointments");
     }
 }

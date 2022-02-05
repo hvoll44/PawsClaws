@@ -13,36 +13,36 @@ public class AppointmentService : IAppointmentService
         _db = db;
     }
 
-    public int CreateAppointment(AppointmentModel appointment)
+    public async Task<int> CreateAppointmentAsync(AppointmentModel appointment)
     {
         using var context = _db.CreateDbContext();
 
-        context.Appointments.Add(appointment.ToDto());
+        await context.Appointments.AddAsync(appointment.ToDto());
 
-        return context.SaveChanges();
+        return await context.SaveChangesAsync();
     }
 
-    public List<AppointmentModel> GetAppointmentListAsync()
+    public async Task<List<AppointmentModel>> GetAppointmentListAsync()
     {
         using var context = _db.CreateDbContext();
 
-        return context.Appointments
+        return await context.Appointments
             .Include(a => a.Customer)
             .Select(a => a.ToModel())
-            .ToList();
+            .ToListAsync();
     }
 
-    public AppointmentModel GetAppointmentAsync(int appointmentId)
+    public async Task<AppointmentModel> GetAppointmentAsync(int appointmentId)
     {
         using var context = _db.CreateDbContext();
 
-        return context.Appointments
+        return await Task.Run(() => context.Appointments
             .Include(a => a.Customer)
             .First(a => a.AppointmentId == appointmentId)
-            .ToModel();
+            .ToModel());
     }
 
-    public int UpdateAppointment(AppointmentModel appointment)
+    public async Task<int> UpdateAppointmentAsync(AppointmentModel appointment)
     {
         using var context = _db.CreateDbContext();
 
@@ -58,10 +58,10 @@ public class AppointmentService : IAppointmentService
         updatedAppointment.Customer.PhoneNumber = appointmentDto.Customer.PhoneNumber;
         updatedAppointment.Description= appointmentDto.Description;
 
-        return context.SaveChanges();
+        return await context.SaveChangesAsync();
     }
 
-    public int DeleteAppointment(int appointmentId)
+    public async Task<int> DeleteAppointmentAsync(int appointmentId)
     {
         using var context = _db.CreateDbContext();
 
@@ -69,6 +69,6 @@ public class AppointmentService : IAppointmentService
 
         context.Appointments.Remove(appointment);
 
-        return context.SaveChanges();
+        return await context.SaveChangesAsync();
     }
 }

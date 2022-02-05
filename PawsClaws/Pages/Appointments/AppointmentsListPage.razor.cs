@@ -16,21 +16,21 @@ public sealed partial class AppointmentsListPage
 
     protected override async Task OnParametersSetAsync()
     {
-        await Task.Run(SetAppointmentsAsync);
+        await SetAppointmentsAsync();
     }
 
     private async Task SetAppointmentsAsync()
     {
-        _appointments = AppointmentService.GetAppointmentListAsync();
+        _appointments = await AppointmentService.GetAppointmentListAsync();
     }
 
-    private void OnDelete(int appointmentId)
+    private async Task OnDeleteAsync(int appointmentId)
     {
-        AppointmentService.DeleteAppointment(appointmentId);
+        await AppointmentService.DeleteAppointmentAsync(appointmentId);
         NavigationManager.NavigateTo("/appointments", forceLoad: true);
     }
 
-    private async Task OnUpdate(int appointmentId)
+    private void OnUpdate(int appointmentId)
     {
         NavigationManager.NavigateTo($"appointments/Update-appointment/{appointmentId}");
     }

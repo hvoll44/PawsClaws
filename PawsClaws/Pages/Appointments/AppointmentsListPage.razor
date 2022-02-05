@@ -37,7 +37,7 @@
                         <button class="btn btn-primary" @onclick="(_ => OnUpdate(appointment.AppointmentId))">Update</button>
                     </td>
                     <td>
-                        <button class="btn btn-danger" @onclick="(_ => OnDelete(appointment.AppointmentId))">Delete</button>
+                        <button class="btn btn-danger" @onclick="(_ => OnDeleteAsync(appointment.AppointmentId))">Delete</button>
                     </td>
                 </tr>
             }
